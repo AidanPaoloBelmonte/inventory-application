@@ -1,0 +1,71 @@
+:root {
+    --general-border-radius: 4px;
+}
+
+body,
+html {
+    padding: 0px;
+    margin: 0px;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Open Sans",
+        "Helvetica Neue",
+        sans-serif;
+}
+
+nav {
+    padding: 4px 48px;
+
+    background-color: #fafafa;
+
+    box-shadow:
+        1px 0px 4px 2px rgba(112, 128, 144, 0.3),
+        1px 0px 12px 6px rgba(192, 192, 192, 0.1);
+}
+
+nav > h1 {
+    color: #2b2b2b;
+    margin: 4px 0px;
+}
+
+.body.index {
+    flex: 1 auto;
+
+    padding: 12px 96px;
+
+    color: #474747;
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    a,
+    a:link {
+        padding: 8px 16px;
+        border: 0px;
+        border-radius: var(--general-border-radius);
+
+        text-decoration: none;
+        font-size: 2.2rem;
+        font-weight: 500;
+
+        color: inherit;
+        background-color: lightgray;
+    }
+
+    a:hover {
+        background-color: #afafaf;
+    }
+}
+
+.no-select {
+    user-select: none;
+}

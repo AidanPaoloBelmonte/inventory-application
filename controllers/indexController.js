@@ -1,6 +1,6 @@
 function getIndex(req, res) {
   res.render("index", {
-    title: "Inventory Application",
+    title: "WarehouseDB - All you can get database",
   });
 }
 
