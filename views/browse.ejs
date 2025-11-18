@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <%- include('./partials/navbar') %>
+  <div class="body browse">
+      <table class="results no-select">
+          <tr>
+              <th class="name">Furniture</th>
+              <th>Category</th>
+              <th>Quantity</th>
+          </tr>
+          <% results.forEach((result, index) => { %>
+              <tr class="result-entry <%= index === 0 ? 'first' : '' %> <%= index + 1 === results.length ? 'last' : '' %>  <%= index % 2 === 0 ? 'odd' : 'even' %>">
+                  <td class="result-info name"><%= result.name %></th>
+                  <td class="result-info category center"><%= result.category %></th>
+                  <td class="result-info quantity center"><%= result.quantity %></th>
+              </tr>
+          <% }); %>
+      </table>
+  </div>
+</body>
+</html>

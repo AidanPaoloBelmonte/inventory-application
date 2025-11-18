@@ -96,3 +96,83 @@ a:hover {
 .no-select {
     user-select: none;
 }
+
+.body.browse {
+    padding: 12px 96px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.results {
+    width: 750px;
+
+    table-layout: fixed;
+    column-width:;
+    border-spacing: 0;
+
+    font-size: 1.2rem;
+    font-weight: inherit;
+
+    th {
+        padding: 8px;
+
+        font-size: 1.3rem;
+    }
+}
+
+.result-entry {
+    .result-info.name {
+        border-left: 1px solid rgba(112, 128, 144, 1);
+    }
+
+    .result-info.quantity {
+        border-right: 1px solid rgba(112, 128, 144, 1);
+    }
+}
+
+.result-entry.even {
+    background-color: #fafafa;
+}
+
+.result-entry.first {
+    * {
+        border-top: 1px solid rgba(112, 128, 144, 1);
+    }
+
+    .result-info.name {
+        border-top-left-radius: 8px;
+    }
+
+    .result-info.quantity {
+        border-top-right-radius: 8px;
+    }
+}
+
+.result-entry.last {
+    * {
+        border-bottom: 1px solid rgba(112, 128, 144, 1);
+    }
+
+    .result-info.name {
+        border-bottom-left-radius: 8px;
+    }
+
+    .result-info.quantity {
+        border-bottom-right-radius: 8px;
+    }
+}
+
+.result-info {
+    text-align: center;
+
+    padding: 8px;
+}
+
+.result-info.name {
+    text-align: left;
+}
+
+.name {
+    width: 400px;
+}
