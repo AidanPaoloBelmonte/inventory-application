@@ -1,5 +1,7 @@
 :root {
     --general-border-radius: 4px;
+
+    --button-hover-bg: #bfbfbf;
 }
 
 body,
@@ -22,6 +24,10 @@ html {
 }
 
 nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+
     padding: 4px 48px;
 
     background-color: #fafafa;
@@ -36,6 +42,17 @@ nav > h1 {
     margin: 4px 0px;
 }
 
+nav > ul {
+    position: inline;
+    align-items: stretch;
+    gap: 4px;
+
+    display: flex;
+    flex-direction: row;
+
+    list-style-type: none;
+}
+
 .body.index {
     flex: 1 auto;
 
@@ -47,23 +64,33 @@ nav > h1 {
         font-size: 4rem;
     }
 
-    a,
-    a:link {
-        padding: 8px 16px;
-        border: 0px;
-        border-radius: var(--general-border-radius);
-
-        text-decoration: none;
+    a {
         font-size: 2.2rem;
         font-weight: 500;
 
-        color: inherit;
         background-color: lightgray;
     }
 
     a:hover {
-        background-color: #afafaf;
+        background-color: var(--button-hover-bg);
     }
+}
+
+a,
+a:link {
+    padding: 8px 16px;
+    border: 0px;
+    border-radius: var(--general-border-radius);
+
+    text-decoration: none;
+
+    color: inherit;
+
+    transition: background-color 200ms ease;
+}
+
+a:hover {
+    background-color: var(--button-hover-bg);
 }
 
 .no-select {
