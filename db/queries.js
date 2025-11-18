@@ -1,6 +1,6 @@
 const pool = require("./pool");
 
-async function getAllFurniture(filters) {
+async function getFurniture(filters) {
   let query = `
     SELECT name, categories.category as category, quantity
     FROM furniture
@@ -11,6 +11,16 @@ async function getAllFurniture(filters) {
   return rows;
 }
 
+async function getAllCategories() {
+  let query = `
+    SELECT * FROM categories
+    `;
+
+  const { rows } = await pool.query(query);
+  return rows;
+}
+
 module.exports = {
-  getAllFurniture,
+  getFurniture,
+  getAllCategories,
 };
