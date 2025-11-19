@@ -25,7 +25,7 @@ const CreateItems = `
   CREATE TABLE IF NOT EXISTS furniture (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255),
-    category INTEGER REFERENCES categories(id),
+    category_id INTEGER REFERENCES categories(id),
     quantity INTEGER
   );
 
