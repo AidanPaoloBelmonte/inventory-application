@@ -6,7 +6,7 @@
 </head>
 <body>
   <%- include('./partials/navbar') %>
-  <form class="browse-options" action="/browse" method="GET">
+  <form class="browse-options" action="/stock" method="GET">
       <label class="option-header" for='name'>Name</label>
       <input class="search" type='text' name='name' id='name' value=<%= filters.name ? filters.name : "" %>>
       <div class="category-options">
@@ -26,7 +26,7 @@
               </div>
           <% }); %>
       </div>
-      <button class="filter-submit" type="submit">Filter</button>
+      <button class="filter submit" type="submit">Filter</button>
   </form>
   <div class="body browse">
       <div class='results-area'>
@@ -37,15 +37,19 @@
         <% } else { %>
             <table class="results no-select">
                 <tr>
+                    <th class="action-col"></th>
                     <th class="name">Furniture</th>
                     <th>Category</th>
                     <th>Quantity</th>
                 </tr>
                 <% results.forEach((result, index) => { %>
                     <tr class="result-entry <%= index === 0 ? 'first' : '' %> <%= index + 1 === results.length ? 'last' : '' %>  <%= index % 2 === 0 ? 'odd' : 'even' %>">
-                        <td class="result-info name"><%= result.name %></th>
-                        <td class="result-info category center"><%= result.category %></th>
-                        <td class="result-info quantity center"><%= result.quantity %></th>
+                        <td class="action-col"><a class="action" href="/stock/edit/<%= result.id %>"></button></td>
+                        <div>
+                            <td class="result-info name"><%= result.name %></th>
+                            <td class="result-info category center"><%= result.category %></th>
+                            <td class="result-info quantity center"><%= result.quantity %></th>
+                        </div>
                     </tr>
                 <% }); %>
             </table>

@@ -24,7 +24,7 @@ async function getBrowseResults(req, res) {
     }
   });
 
-  const results = await db.getFurniture(filters);
+  const results = await db.getFurnitures(filters);
   const category_list = await db.getAllCategories();
 
   res.render("browse", {
@@ -35,11 +35,31 @@ async function getBrowseResults(req, res) {
   });
 }
 
+async function getBrowseEdit(req, res) {
+  const properties = await db.getFurniture(req.params.id);
+  const category_list = await db.getAllCategories();
+
+  res.render("edit-stock", {
+    title: "Edit Stock - WarehouseDB",
+    props: properties[0],
+    categories: category_list,
+  });
+}
+
+async function postBrowseEdit(req, res) {
+  const pathSplit = req.path.split("/");
+  const props = { id: pathSplit[pathSplit.length - 1], ...req.body };
+
+  await db.updateFurniture(props);
+
+  res.redirect("/stock");
+}
+
 async function postBrowseResults(req, res) {
   const { name, categories } = req.body;
   const filter = { name, categories };
 
-  const results = await db.getFurniture(filter);
+  const results = await db.getFurnitures(filter);
   const category_list = await db.getAllCategories();
 
   res.render("browse", {
@@ -51,5 +71,7 @@ async function postBrowseResults(req, res) {
 
 module.exports = {
   getBrowseResults,
+  getBrowseEdit,
   postBrowseResults,
+  postBrowseEdit,
 };

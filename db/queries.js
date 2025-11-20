@@ -1,8 +1,19 @@
 const pool = require("./pool");
 
-async function getFurniture(filters) {
+async function getFurniture(id) {
   let query = `
-    SELECT name, categories.category as category, quantity
+    SELECT *
+    FROM furniture
+    WHERE id=${id}
+    `;
+
+  const { rows } = await pool.query(query);
+  return rows;
+}
+
+async function getFurnitures(filters) {
+  let query = `
+    SELECT furniture.id, name, categories.category as category, quantity
     FROM furniture
     JOIN categories ON furniture.category=categories.id
     `;
@@ -12,7 +23,6 @@ async function getFurniture(filters) {
     query += "WHERE";
 
     Object.keys(filters).forEach((key, index) => {
-      console.log(key, typeof filters[key], filters[key]);
       switch (typeof filters[key]) {
         case "string":
           query += ` furniture.${key} LIKE \'%${filters[key]}%\'`;
@@ -46,7 +56,31 @@ async function getAllCategories() {
   return rows;
 }
 
+async function updateFurniture(props) {
+  let params = "";
+  Object.keys(props).forEach((k, i) => {
+    if (k === "id") return;
+    if (k === "name") {
+      params += `${k} = \'${props[k]}\'`;
+    } else {
+      params += `${k} = ${props[k]}`;
+    }
+
+    if (i != Object.keys(props).length - 1) params += ", ";
+  });
+
+  let query = `
+    UPDATE furniture
+    SET ${params}
+    WHERE id = ${props.id}
+    `;
+
+  await pool.query(query);
+}
+
 module.exports = {
   getFurniture,
+  getFurnitures,
   getAllCategories,
+  updateFurniture,
 };

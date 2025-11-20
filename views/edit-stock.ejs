@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <%- include('./partials/navbar') %>
+  <div class="body edit">
+    <form class="edit-options" action="/stock/edit/<%= props.id %>" method="POST">
+        <table>
+            <tr>
+                <th class="name"><label for="name">Name</label></th>
+                <th><label for="category">Category</label></th>
+                <th class="quantity"><label for="quantity">Quantity</label></th>
+            </tr>
+            <tr class="edit-input">
+                <td><input type="text" name="name" id="name" value="<%= props.name %>" required></td>
+                <td>
+                    <select name="category" id="category">
+                      <% categories.forEach(category => { %>
+                        <option value=<%= category.id %> <%= category.id == props.category ? "selected" : "" %>>
+                            <%= category.category %>
+                        </option>
+                      <% }); %>
+                    </select>
+                </td>
+                <td><input type="number" name="quantity" id="quantity" value="<%= props.quantity %>" required></td>
+            </tr>
+        </table>
+        <button class="update submit" type="submit">Update</button>
+      </form>
+  </div>
+</body>
+</html>

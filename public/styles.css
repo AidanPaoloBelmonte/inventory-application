@@ -25,6 +25,7 @@ html {
 
 nav {
     position: sticky;
+    z-index: 10;
     top: 0px;
 
     display: flex;
@@ -102,7 +103,7 @@ button:hover {
 }
 
 .body.browse {
-    padding: 12px 96px 12px 346px;
+    padding: 22px 96px 12px 300px;
 
     display: flex;
     gap: 32px;
@@ -138,12 +139,18 @@ button:hover {
     }
 }
 
-.result-entry.even {
+.result-entry:hover {
+    .action {
+        display: inline;
+    }
+}
+
+.even {
     background-color: #fafafa;
 }
 
 .result-entry.first {
-    * {
+    .result-info {
         border-top: 1px solid rgba(112, 128, 144, 1);
     }
 
@@ -157,7 +164,7 @@ button:hover {
 }
 
 .result-entry.last {
-    * {
+    .result-info {
         border-bottom: 1px solid rgba(112, 128, 144, 1);
     }
 
@@ -184,6 +191,14 @@ button:hover {
     width: 400px;
 }
 
+.action-col {
+    width: 30px;
+
+    text-align: center;
+
+    background-color: white;
+}
+
 .browse-options {
     position: fixed;
     top: 128px;
@@ -195,7 +210,7 @@ button:hover {
     flex-direction: column;
     gap: 4px;
 
-    padding: 16px;
+    padding: 8px 16px;
     border-radius: var(--general-border-radius);
 
     background-color: #fafafa;
@@ -204,6 +219,7 @@ button:hover {
 .option-header {
     margin: 0px;
     margin-top: 4px;
+    margin-bottom: 4px;
 
     font-size: 1.3rem;
 }
@@ -225,15 +241,89 @@ label.option-header {
     font-size: 1.1rem;
 }
 
-.filter-submit {
+.submit {
     padding: 8px 24px;
     border: 0px;
     border-radius: var(--general-border-radius);
-    margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 8px auto;
 
     font-size: 1.3rem;
 
     background-color: lightgray;
+}
+
+.action {
+    display: none;
+
+    width: 32px;
+    aspect-ratio: 1/1;
+
+    border: 0px;
+    padding: 4px;
+    border-radius: 50%;
+
+    background-color: lightgray;
+}
+
+.body.edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-options {
+    display: flex;
+    flex-direction: column;
+
+    table {
+        table-layout: fixed;
+        border-spacing: 0;
+
+        padding: 12px;
+        border-radius: var(--general-border-radius);
+        margin-top: 24px;
+
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    th {
+        padding: 1.3rem;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+
+    input,
+    select {
+        padding: 4px;
+        border-radius: var(--general-border-radius);
+
+        font-size: inherit;
+    }
+}
+
+.edit-input {
+    * {
+        border-top: 1px solid rgba(112, 128, 144, 1);
+        border-bottom: 1px solid rgba(112, 128, 144, 1);
+    }
+
+    *:first-child {
+        border-top-left-radius: var(--general-border-radius);
+        border-bottom-left-radius: var(--general-border-radius);
+        border-left: 1px solid rgba(112, 128, 144, 1);
+    }
+
+    *:last-child {
+        border-top-right-radius: var(--general-border-radius);
+        border-bottom-right-radius: var(--general-border-radius);
+        border-right: 1px solid rgba(112, 128, 144, 1);
+    }
+
+    #name {
+        min-width: 100%;
+    }
 }
