@@ -252,6 +252,10 @@ label.option-header {
     background-color: lightgray;
 }
 
+.filter.submit {
+    margin-bottom: 4px;
+}
+
 .action {
     display: none;
 
@@ -302,6 +306,10 @@ label.option-header {
         border-radius: var(--general-border-radius);
 
         font-size: inherit;
+    }
+
+    select {
+        padding: 4px 8px;
     }
 }
 
