@@ -41,8 +41,6 @@ async function getFurnitures(filters) {
     });
   }
 
-  console.log(query);
-
   const { rows } = await pool.query(query);
   return rows;
 }
