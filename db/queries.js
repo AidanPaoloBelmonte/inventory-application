@@ -76,6 +76,15 @@ async function updateFurniture(props) {
   await pool.query(query);
 }
 
+async function addFurniture(props) {
+  let query = `
+    INSERT INTO furniture(name, category, quantity)
+    VALUES (\'${props.name}\', ${props.category}, ${props.quantity})
+    `;
+
+  await pool.query(query);
+}
+
 async function deleteFurniture(id) {
   let query = `
     DELETE FROM furniture
@@ -90,5 +99,6 @@ module.exports = {
   getFurnitures,
   getAllCategories,
   updateFurniture,
+  addFurniture,
   deleteFurniture,
 };

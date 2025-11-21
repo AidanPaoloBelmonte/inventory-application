@@ -191,11 +191,29 @@ button:hover {
     width: 400px;
 }
 
-.browse-options {
+.sidebar {
     position: fixed;
     top: 128px;
     left: 96px;
 
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+
+    a {
+        text-align: center;
+        font-size: 1.3rem;
+
+        background-color: lightgray;
+    }
+
+    a:hover {
+        background-color: var(--button-hover-bg);
+    }
+}
+
+.browse-options {
     width: 250px;
 
     display: flex;
@@ -246,6 +264,10 @@ label.option-header {
 
 .filter.submit {
     margin-bottom: 4px;
+}
+
+.new.submit {
+    margin: 8px;
 }
 
 .action-col {

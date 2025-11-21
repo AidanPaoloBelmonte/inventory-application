@@ -54,12 +54,26 @@ async function getBrowseDelete(req, res) {
     props: properties[0],
   });
 }
+async function getBrowseNew(req, res) {
+  const category_list = await db.getAllCategories();
+
+  res.render("new-stock", {
+    title: "New Stock - WarehouseDB",
+    categories: category_list,
+  });
+}
 
 async function postBrowseEdit(req, res) {
   const pathSplit = req.path.split("/");
   const props = { id: pathSplit[pathSplit.length - 1], ...req.body };
 
   await db.updateFurniture(props);
+
+  res.redirect("/stock");
+}
+
+async function postBrowseNew(req, res) {
+  await db.addFurniture(req.body);
 
   res.redirect("/stock");
 }
@@ -90,7 +104,9 @@ module.exports = {
   getBrowseResults,
   getBrowseEdit,
   getBrowseDelete,
+  getBrowseNew,
   postBrowseResults,
   postBrowseEdit,
   postBrowseDelete,
+  postBrowseNew,
 };

@@ -6,28 +6,31 @@
 </head>
 <body>
   <%- include('./partials/navbar') %>
-  <form class="browse-options" action="/stock" method="GET">
-      <label class="option-header" for='name'>Name</label>
-      <input class="search" type='text' name='name' id='name' value=<%= filters.name ? filters.name : "" %>>
-      <div class="category-options">
-          <p class="option-header">Category</p>
-          <% categories.forEach((category, index) => { %>
-              <div class="option-entry">
-                  <input
-                      type='checkbox'
-                      name='category'
-                      id='<%= category.category %>'
-                      value='<%= category.id %>'
-                      <%= (category.id === filters.category ||(Array.isArray(filters.category) && filters.category.includes(`${category.id}`)) ? "checked" : "") %>
-                  >
-                  <label for='<%= category.category %>'>
-                      <%= category.category %>
-                  </label>
-              </div>
-          <% }); %>
-      </div>
-      <button class="filter submit" type="submit">Filter</button>
-  </form>
+  <div class="sidebar">
+      <form class="browse-options" action="/stock" method="GET">
+          <label class="option-header" for='name'>Name</label>
+          <input class="search" type='text' name='name' id='name' value=<%= filters.name ? filters.name : "" %>>
+          <div class="category-options">
+              <p class="option-header">Category</p>
+              <% categories.forEach((category, index) => { %>
+                  <div class="option-entry">
+                      <input
+                          type='checkbox'
+                          name='category'
+                          id='<%= category.category %>'
+                          value='<%= category.id %>'
+                          <%= (category.id === filters.category ||(Array.isArray(filters.category) && filters.category.includes(`${category.id}`)) ? "checked" : "") %>
+                      >
+                      <label for='<%= category.category %>'>
+                          <%= category.category %>
+                      </label>
+                  </div>
+              <% }); %>
+          </div>
+          <button class="filter submit" type="submit">Filter</button>
+      </form>
+      <a class="new" href="/stock/new">New Item</a>
+  </div>
   <div class="body browse">
       <div class='results-area'>
         <% if (results.length <= 0) { %>
