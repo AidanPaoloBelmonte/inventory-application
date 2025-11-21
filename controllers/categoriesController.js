@@ -14,6 +14,12 @@ async function getCategories(req, res) {
   }
 }
 
+async function getCategoriesNew(req, res) {
+  res.render("new-category", {
+    title: "New Category- WarehouseDB",
+  });
+}
+
 async function getCategoriesDelete(req, res) {
   const id = parseInt(req.params.id[0]);
   const active = await db.getFurnitures({ category: id });
@@ -39,8 +45,16 @@ async function postCategoriesDelete(req, res) {
   res.redirect("/categories");
 }
 
+async function postCategoriesNew(req, res) {
+  await db.addCategory(req.body);
+
+  res.redirect("/categories");
+}
+
 module.exports = {
   getCategories,
+  getCategoriesNew,
   getCategoriesDelete,
+  postCategoriesNew,
   postCategoriesDelete,
 };

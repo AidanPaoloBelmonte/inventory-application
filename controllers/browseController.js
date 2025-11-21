@@ -54,6 +54,7 @@ async function getBrowseDelete(req, res) {
     props: properties[0],
   });
 }
+
 async function getBrowseNew(req, res) {
   const category_list = await db.getAllCategories();
 

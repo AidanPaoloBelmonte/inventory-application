@@ -104,6 +104,15 @@ async function getCategory(id) {
   return rows;
 }
 
+async function addCategory(props) {
+  let query = `
+    INSERT INTO categories(category)
+    VALUES (\'${props.name}\')
+    `;
+
+  await pool.query(query);
+}
+
 async function deleteCategory(id) {
   let query = `
     DELETE FROM categories
@@ -121,5 +130,6 @@ module.exports = {
   deleteFurniture,
   getAllCategories,
   getCategory,
+  addCategory,
   deleteCategory,
 };

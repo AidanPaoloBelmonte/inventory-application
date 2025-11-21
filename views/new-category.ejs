@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <%- include('./partials/navbar') %>
+  <div class="body edit">
+    <form class="edit-options" action="/categories/new" method="POST">
+        <table class="cat update-form">
+            <tr>
+                <th class="name"><label for="name">Name</label></th>
+            </tr>
+            <tr class="cat edit-input">
+                <td>
+                    <input type="text" name="name" id="name" required>
+                </td>
+            </tr>
+        </table>
+        <button class="update submit" type="submit">Add Item</button>
+      </form>
+  </div>
+</body>
+</html>

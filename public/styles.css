@@ -433,3 +433,9 @@ a.action {
     color: mediumvioletred;
     text-align: center;
 }
+
+.cat.edit-input {
+    #name {
+        min-width: 90%;
+    }
+}
