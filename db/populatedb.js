@@ -52,7 +52,7 @@ async function main() {
   console.log("Seeding database warehouse...");
 
   const client = new Client({
-    connectionString: `postgresql://${process.env.USER}:${process.env.PASSWORD}@localhost:5432/${process.env.DATABASE}`,
+    connectionString: process.env.DATABASE_URL,
   });
   await client.connect();
   await client.query(CreateCategory);
