@@ -3,6 +3,7 @@ const { Client } = require("pg");
 require("dotenv").config();
 
 const CreateCategory = `
+  DROP TABLE IF EXISTS furniture;
   DROP TABLE IF EXISTS categories;
 
   CREATE TABLE IF NOT EXISTS categories (
@@ -25,7 +26,7 @@ const CreateItems = `
   CREATE TABLE IF NOT EXISTS furniture (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255),
-    category_id INTEGER REFERENCES categories(id),
+    category INTEGER REFERENCES categories(id),
     quantity INTEGER
   );
 
@@ -51,8 +52,12 @@ const CreateItems = `
 async function main() {
   console.log("Seeding database warehouse...");
 
+  const connectionString = process.env.DATABASE_URL
+    ? process.env.DATABASE_URL
+    : `postgresql://${process.env.USER}:${process.env.PASSWORD}@localhost:5432/${process.env.DATABASE}`;
+
   const client = new Client({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: connectionString,
   });
   await client.connect();
   await client.query(CreateCategory);
