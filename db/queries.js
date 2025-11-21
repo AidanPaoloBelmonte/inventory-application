@@ -76,9 +76,19 @@ async function updateFurniture(props) {
   await pool.query(query);
 }
 
+async function deleteFurniture(id) {
+  let query = `
+    DELETE FROM furniture
+    WHERE id = ${id}
+    `;
+
+  await pool.query(query);
+}
+
 module.exports = {
   getFurniture,
   getFurnitures,
   getAllCategories,
   updateFurniture,
+  deleteFurniture,
 };

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <%- include('./partials/navbar') %>
+  <div class="body delete">
+    <form class="delete-options" action="/stock/delete/<%= props.id %>" method="POST">
+      <p>Are you sure you want to delete <%= props.name %>?</p>
+        <div class="delete-actions">
+            <button class="delete submit" type="submit">Delete</button>
+            <a href="/stock">Cancel</a>
+        </div>
+      </form>
+  </div>
+</body>
+</html>

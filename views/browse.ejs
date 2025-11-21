@@ -44,7 +44,12 @@
                 </tr>
                 <% results.forEach((result, index) => { %>
                     <tr class="result-entry <%= index === 0 ? 'first' : '' %> <%= index + 1 === results.length ? 'last' : '' %>  <%= index % 2 === 0 ? 'odd' : 'even' %>">
-                        <td class="action-col"><a class="edit action" href="/stock/edit/<%= result.id %>"></button></td>
+                        <td class="action-col">
+                            <div class="action-container">
+                                <a class="delete action" href="/stock/delete/<%= result.id %>"></a>
+                                <a class="edit action" href="/stock/edit/<%= result.id %>"></a>
+                            </div>
+                        </td>
                         <div>
                             <td class="result-info name"><%= result.name %></th>
                             <td class="result-info category center"><%= result.category %></th>

@@ -103,7 +103,7 @@ button:hover {
 }
 
 .body.browse {
-    padding: 22px 96px 12px 300px;
+    padding: 22px 96px 12px 268px;
 
     display: flex;
     gap: 32px;
@@ -249,31 +249,46 @@ label.option-header {
 }
 
 .action-col {
-    width: 32px;
+    width: 75px;
 
     text-align: center;
 
     background-color: white;
 }
 
+.action-container {
+    height: 32px;
+
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+}
+
+a.action {
+    padding: 4px;
+}
+
 .action {
     display: none;
 
-    border: 0px;
-    padding: 4px;
-    border-radius: 50%;
-
-    background-color: lightgray;
-}
-
-.edit.action {
     width: 32px;
     aspect-ratio: 1/1;
 
-    background-image: url("../icons/pencil.svg");
+    border: 0px;
+    border-radius: 50%;
+
+    background-color: lightgray;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 75%;
+    background-size: 60%;
+}
+
+.edit.action {
+    background-image: url("../icons/pencil.svg");
+}
+
+.delete.action {
+    background-image: url("../icons/delete.svg");
 }
 
 .body.edit {
@@ -341,4 +356,36 @@ label.option-header {
     #name {
         min-width: 100%;
     }
+}
+
+.body.delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 12px;
+    border-radius: var(--general-border-radius);
+    margin-top: 24px;
+
+    p {
+        font-size: 1.3rem;
+    }
+
+    a {
+        font-size: 1.3rem;
+        background-color: lightgray;
+
+        margin: 0px;
+    }
+
+    button {
+        margin: 0px;
+    }
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 }
