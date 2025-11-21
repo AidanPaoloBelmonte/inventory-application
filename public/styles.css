@@ -278,10 +278,15 @@ label.option-header {
     background-color: white;
 }
 
+.cat.action-col {
+    width: 32px;
+}
+
 .action-container {
     height: 32px;
 
     display: flex;
+    justify-content: center;
     align-items: stretch;
     gap: 4px;
 }
@@ -410,4 +415,21 @@ a.action {
     justify-content: center;
     align-items: center;
     gap: 16px;
+}
+
+.body.categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-top: 24px;
+}
+
+.cat.results {
+    width: 250px;
+}
+
+.error {
+    color: mediumvioletred;
+    text-align: center;
 }

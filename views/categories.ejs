@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <%- include('./partials/navbar') %>
+  <div class="body categories">
+      <% if (error) { %>
+          <p class="error">There are stocks using this category, so it cannot be deleted.</p>
+      <% } %>
+      <div class='results-area'>
+        <% if (categories.length <= 0) { %>
+            <div class="empty-result">
+                <p>No Matching Results</p>
+            </div>
+        <% } else { %>
+            <table class="cat results no-select">
+                <tr>
+                    <th class="cat action-col"></th>
+                    <th class="name">Category</th>
+                </tr>
+                <% categories.forEach((cat, index) => { %>
+                    <tr class="result-entry  <%= index % 2 === 0 ? 'odd' : 'even' %>">
+                        <td class="action-col">
+                            <div class="action-container">
+                                <a class="delete action" href="/categories/delete/<%= cat.id %>"></a>
+                            </div>
+                        </td>
+                        <div>
+                            <td class="result-info name">
+                                <%= cat.category %>
+                            </td>
+                        </div>
+                    </tr>
+                <% }); %>
+            </table>
+        <% } %>
+      </div>
+  </div>
+</body>
+</html>

@@ -45,15 +45,6 @@ async function getFurnitures(filters) {
   return rows;
 }
 
-async function getAllCategories() {
-  let query = `
-    SELECT * FROM categories
-    `;
-
-  const { rows } = await pool.query(query);
-  return rows;
-}
-
 async function updateFurniture(props) {
   let params = "";
   Object.keys(props).forEach((k, i) => {
@@ -94,11 +85,41 @@ async function deleteFurniture(id) {
   await pool.query(query);
 }
 
+async function getAllCategories() {
+  let query = `
+    SELECT * FROM categories
+    `;
+
+  const { rows } = await pool.query(query);
+  return rows;
+}
+
+async function getCategory(id) {
+  let query = `
+    SELECT * FROM categories
+    WHERE id = ${id}
+    `;
+
+  const { rows } = await pool.query(query);
+  return rows;
+}
+
+async function deleteCategory(id) {
+  let query = `
+    DELETE FROM categories
+    WHERE id = ${id}
+    `;
+
+  await pool.query(query);
+}
+
 module.exports = {
   getFurniture,
   getFurnitures,
-  getAllCategories,
   updateFurniture,
   addFurniture,
   deleteFurniture,
+  getAllCategories,
+  getCategory,
+  deleteCategory,
 };

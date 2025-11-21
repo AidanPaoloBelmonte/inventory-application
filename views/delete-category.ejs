@@ -7,11 +7,11 @@
 <body>
   <%- include('./partials/navbar') %>
   <div class="body delete">
-    <form class="delete-options" action="/stock/delete/<%= props.id %>" method="POST">
-      <p>Are you sure you want to delete <b><%= props.name %></b>?</p>
+    <form class="delete-options" action="/categories/delete/<%= props.id %>" method="POST">
+      <p>Are you sure you want to delete <b><%= props.category %></b>?</p>
         <div class="delete-actions">
             <button class="delete submit" type="submit">Delete</button>
-            <a href="/stock">Cancel</a>
+            <a href="/categories">Cancel</a>
         </div>
       </form>
   </div>

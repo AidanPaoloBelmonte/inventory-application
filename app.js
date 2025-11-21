@@ -1,7 +1,10 @@
 const path = require("node:path");
 const express = require("express");
+const session = require("express-session");
 
 const appRouter = require("./routes/appRouter");
+const stockRouter = require("./routes/browseRouter");
+const categoriesRouter = require("./routes/categoriesRouter");
 
 require("dotenv").config();
 
@@ -14,8 +17,17 @@ const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: true,
+    saveUninitialized: true,
+  }),
+);
 
 app.use("/", appRouter);
+app.use("/stock", stockRouter);
+app.use("/categories", categoriesRouter);
 
 const PORT = process.env.HOST_PORT | 3000;
 app.listen(PORT, (error) => {
